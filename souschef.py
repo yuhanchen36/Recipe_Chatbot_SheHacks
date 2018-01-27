@@ -21,6 +21,7 @@ class SousChef:
 
         self.context = {}
 
+    #Returns the text given by the user
     def parse_slack_output(self, slack_rtm_output):
         output_list = slack_rtm_output
         if output_list and len(output_list) > 0:
@@ -32,6 +33,7 @@ class SousChef:
                            output['channel']
         return None, None
 
+    #Post the reply on the output screen
     def post_to_slack(self, response, channel):
         self.slack_client.api_call("chat.postMessage",
                                    channel=channel,
@@ -99,6 +101,7 @@ class SousChef:
 
         return self.make_formatted_steps(recipe_info, recipe_steps)
 
+    #Get response from Watson and save it in self.context variable.
     def handle_message(self, message, channel):
         watson_response = self.conversation_client.message(
             workspace_id=self.workspace_id,
@@ -136,12 +139,14 @@ class SousChef:
 
         self.post_to_slack(response, channel)
 
+    # the main function
+    #Keep track of inputs given by the user
     def run(self):
         if self.slack_client.rtm_connect():
             print("sous-chef is connected and running!")
             while True:
-                slack_output = self.slack_client.rtm_read()
-                message, channel = self.parse_slack_output(slack_output)
+                user_input = self.slack_client.rtm_read()
+                message, channel = self.parse_slack_output(user_input)
                 if message and channel:
                     self.handle_message(message, channel)
                 time.sleep(self.delay)

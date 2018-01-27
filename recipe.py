@@ -8,6 +8,7 @@ class RecipeClient:
       'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/'
     self.api_key = api_key
 
+#Take list of ingredients given by user and retrieve upto 5 recipes.
   def find_by_ingredients(self, ingredients):
     url = self.endpoint + 'recipes/findByIngredients'
 
@@ -26,6 +27,7 @@ class RecipeClient:
 
     return requests.get(url, params=params, headers=headers).json()
 
+  #Retrieve 5 recipes from a type of cuisine
   def find_by_cuisine(self, cuisine):
     url = self.endpoint + "recipes/search"
 
@@ -40,6 +42,7 @@ class RecipeClient:
                         params=payload,
                         headers=headers).json()['results']
 
+  #Retrieve recipe information when asked by user.
   def get_info_by_id(self, id):
     url = self.endpoint + "recipes/" + str(id) + "/information"
     params = {'includeNutrition': False }
@@ -47,6 +50,7 @@ class RecipeClient:
 
     return requests.get(url, params=params, headers=headers).json()
 
+  #Retrieve steps involved in making a recipe
   def get_steps_by_id(self, id):
     url = self.endpoint + "recipes/" + str(id) + "/analyzedInstructions"
     params = {'stepBreakdown': True}
