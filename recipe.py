@@ -1,6 +1,7 @@
 import requests
 import json, os
 from dotenv import load_dotenv
+import google_search
 
 class RecipeClient:
   def __init__(self, api_key):
@@ -9,23 +10,26 @@ class RecipeClient:
     self.api_key = api_key
 
 #Take list of ingredients given by user and retrieve upto 5 recipes.
-  def find_by_ingredients(self, ingredients):
-    url = self.endpoint + 'recipes/findByIngredients'
-
-    params = {
-      'fillIngredients': False,
-      'ingredients': ingredients, #string
-      'limitLicense': False,
-      'number': 5,
-      'ranking': 1
-    }
-
-    headers={
-      "X-Mashape-Key": self.api_key,
-      "Accept": "application/json"
-    }
-
-    return requests.get(url, params=params, headers=headers).json()
+  # def find_by_ingredients(self, ingredients):
+  #   url = self.endpoint + 'recipes/findByIngredients'
+  #
+  #   params = {
+  #     'fillIngredients': False,
+  #     'ingredients': ingredients, #string
+  #     'limitLicense': False,
+  #     'number': 5,
+  #     'ranking': 1
+  #   }
+    #
+    # headers={
+    #   "X-Mashape-Key": self.api_key,
+    #   "Accept": "application/json"
+    # }
+    #
+    # return requests.get(url, params=params, headers=headers).json()
+  def find_by_ingredients(self, ingredients){
+    return google_search.return_search_results("egg")
+  }
 
   #Retrieve 5 recipes from a type of cuisine
   def find_by_cuisine(self, cuisine):

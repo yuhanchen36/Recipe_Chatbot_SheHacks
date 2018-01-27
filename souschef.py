@@ -1,3 +1,4 @@
+
 import json
 import os
 import time
@@ -67,17 +68,18 @@ class SousChef:
         return response
 
     def handle_ingredients_message(self, message):
-        if self.context['get_recipes']:
-            self.context['recipes'] = \
-                self.recipe_client.find_by_ingredients(message)
+        # if self.context['get_recipes']:
+        #     self.context['recipes'] = \
+        #         self.recipe_client.find_by_ingredients(message)
 
         response = "Lets see here...\n" + \
                    "I've found these recipes: \n"
 
-        for i, recipe in enumerate(self.context['recipes']):
-            response += str(i + 1) + ". " + recipe['title'] + "\n"
-        response += "\nPlease enter the corresponding number of your choice."
+        # for i, recipe in enumerate(self.context['recipes']):
+        #     response += str(i + 1) + ". " + recipe['title'] + "\n"
+        # response += "\nPlease enter the corresponding number of your choice."
 
+        response += find_by_ingredients(message)
         return response
 
     def handle_cuisine_message(self, cuisine):

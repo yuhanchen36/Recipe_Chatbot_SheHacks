@@ -1,0 +1,30 @@
+<script>
+  (function() {
+    var cx = '002149522544821780182:e6gky6pwac8';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>
+
+
+http://www.google.com/search?
+  start=0
+  &num=10
+  &as_q=recipe
+  &as_eq=Yankees
+  &client=google-csbe
+  &output=xml_no_dtd
+  &cx=002149522544821780182:u-scht7a-8i  
+
+API Key:AIzaSyBJZndfl1NXL0oZDsEw2LE3zLNar7etftU
+
+https://cse.google.com/cse?q=red+sox+&client=google-csbe+&cx=002149522544821780182:u-scht7a-8i
+
+YES THIS WORKS
+GET https://www.googleapis.com/customsearch/v1?key=AIzaSyBJZndfl1NXL0oZDsEw2LE3zLNar7etftU
+&cx=002149522544821780182:e6gky6pwac8&q=egg
